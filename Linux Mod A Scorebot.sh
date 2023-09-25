@@ -9,7 +9,7 @@ do
       sed -i '18s/❌/✅/' README.html
     fi
   fi
-  if ( ! eval ls /home/cyber/Document | grep pass.txt ); then
+  if ( ! eval ls /home/cyber/Documents | grep pass.txt ); then
     if ( eval sed -n 19p README.html | grep '❌' ); then
       sed -i '19s/❌/✅/' README.html
     fi
@@ -24,7 +24,7 @@ do
       sed -i '21s/❌/✅/' README.html
     fi
   fi
-  if ( eval ls /home/cyber/Document | grep ubu ); then
+  if ( eval ls /home/cyber/Documents | grep ubu ); then
     if ( eval sed -n 22p README.html | grep '❌' ); then
       sed -i '22s/❌/✅/' README.html
     fi
