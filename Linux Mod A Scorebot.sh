@@ -1,5 +1,7 @@
 #!/bin/bash
 
+README.html="/home/cyber/Desktop/README.html"
+
 while true
 do
   if ( eval ls /home/cyber | grep Music ); then
