@@ -13,5 +13,5 @@ if ( eval cat /home/cyber/Desktop/file.txt | grep 'l0nest@r' ); then
   if ( eval sed -n 21p README.html | grep '❌' ); then
     sed -i '21s/❌/✅/' README.html
 if ( eval ls /home/cyber/Document | grep ubu ); then
-  if ( eval sed -n 21p README.html | grep '❌' ); then
-    sed -i '21s/❌/✅/' README.html
+  if ( eval sed -n 22p README.html | grep '❌' ); then
+    sed -i '22s/❌/✅/' README.html
