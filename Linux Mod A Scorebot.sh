@@ -15,3 +15,5 @@ if ( eval cat /home/cyber/Desktop/file.txt | grep 'l0nest@r' ); then
 if ( eval ls /home/cyber/Document | grep ubu ); then
   if ( eval sed -n 22p README.html | grep '❌' ); then
     sed -i '22s/❌/✅/' README.html
+if ( ! eval cat /home/cyber/Desktop/README.html | grep '❌' ); then
+  sed -i '25/"<p>Congratulations! You have finished module A and now know basic terminal utility. You can now move onto Module B for basic security</p>"' README.html
