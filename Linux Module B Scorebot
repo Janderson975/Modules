@@ -40,13 +40,13 @@ do
     fi
   fi
   if ( eval cat /etc/ssh/ssh_config | grep 'Protocol 2' ); then
-    if ( eval sed -n 33p $README | grep '❌' ); then
-      sed -i '33s/❌/✅/' $README
+    if ( eval sed -n 37p $README | grep '❌' ); then
+      sed -i '37s/❌/✅/' $README
     fi
   fi
   if ( eval cat /etc/ssh/ssh_config | grep 'PermitRootLogin no' ); then
-    if ( eval sed -n 33p $README | grep '❌' ); then
-      sed -i '33s/❌/✅/' $README
+    if ( eval sed -n 39p $README | grep '❌' ); then
+      sed -i '39s/❌/✅/' $README
     fi
   fi
 done
