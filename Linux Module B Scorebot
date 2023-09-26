@@ -1,52 +1,52 @@
 #!/bin/bash
 
-README.html="/home/cyber/Desktop/README.html"
+README="/home/cyber/Desktop/README.html"
 
 while true
 do
   if ( eval ufw status | grep enable ); then
-    if ( eval sed -n 19p README.html | grep '❌' ); then
-      sed -i '19s/❌/✅/' README.html
+    if ( eval sed -n 19p $README | grep '❌' ); then
+      sed -i '19s/❌/✅/' $README
     fi
   fi
   if ( eval cat /etc/login.defs | grep PASS_MAX_DAYS | grep 90 ); then
-    if ( eval sed -n 23p README.html | grep '❌' ); then
-      sed -i '23s/❌/✅/' README.html
+    if ( eval sed -n 23p $README | grep '❌' ); then
+      sed -i '23s/❌/✅/' $README
     fi
   fi
   if ( eval cat /etc/login.defs | grep PASS_MIN_DAYS | grep 10 ); then
-    if ( eval sed -n 25p README.html | grep '❌' ); then
-      sed -i '25s/❌/✅/' README.html
+    if ( eval sed -n 25p $README | grep '❌' ); then
+      sed -i '25s/❌/✅/' $README
     fi
   fi
   if ( eval cat /etc/group | grep kali ); then
-    if ( eval sed -n 28p README.html | grep '❌' ); then
-      sed -i '28s/❌/✅/' README.html
+    if ( eval sed -n 28p $README | grep '❌' ); then
+      sed -i '28s/❌/✅/' $README
     fi
   fi
   if ( eval dpkg -l | grep openssh-client ); then
-    if ( eval sed -n 31p README.html | grep '❌' ); then
-      sed -i '31s/❌/✅/' README.html
+    if ( eval sed -n 31p $README | grep '❌' ); then
+      sed -i '31s/❌/✅/' $README
     fi
   fi
   if ( ! eval cat /etc/ssh/ssh_config | grep 'ForwardX11 no' | grep \# ); then
-    if ( eval sed -n 33p README.html | grep '❌' ); then
-      sed -i '33s/❌/✅/' README.html
+    if ( eval sed -n 33p $README | grep '❌' ); then
+      sed -i '33s/❌/✅/' $README
     fi
   fi
   if ( ! eval cat /etc/ssh/ssh_config | grep 'Port 22' | grep \# ); then
-    if ( eval sed -n 35p README.html | grep '❌' ); then
-      sed -i '35s/❌/✅/' README.html
+    if ( eval sed -n 35p $README | grep '❌' ); then
+      sed -i '35s/❌/✅/' $README
     fi
   fi
   if ( eval cat /etc/ssh/ssh_config | grep 'Protocol 2' ); then
-    if ( eval sed -n 33p README.html | grep '❌' ); then
-      sed -i '33s/❌/✅/' README.html
+    if ( eval sed -n 33p $README | grep '❌' ); then
+      sed -i '33s/❌/✅/' $README
     fi
   fi
   if ( eval cat /etc/ssh/ssh_config | grep 'PermitRootLogin no' ); then
-    if ( eval sed -n 33p README.html | grep '❌' ); then
-      sed -i '33s/❌/✅/' README.html
+    if ( eval sed -n 33p $README | grep '❌' ); then
+      sed -i '33s/❌/✅/' $README
     fi
   fi
 done
