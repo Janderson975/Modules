@@ -4,7 +4,7 @@ README="/home/cyber/Desktop/README.html"
 
 while true
 do
-  if ( eval ufw status | grep enable ); then
+  if ( eval ufw status | grep active ); then
     if ( eval sed -n 19p $README | grep '❌' ); then
       sed -i '19s/❌/✅/' $README
     fi
