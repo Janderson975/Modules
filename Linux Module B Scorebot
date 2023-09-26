@@ -4,29 +4,44 @@ README.html="/home/cyber/Desktop/README.html"
 
 while true
 do
-  if ( eval ls /home/cyber | grep Music ); then
-    if ( eval sed -n 18p README.html | grep '❌' ); then
-      sed -i '18s/❌/✅/' README.html
-    fi
-  fi
-  if ( ! eval ls /home/cyber/Documents | grep pass.txt ); then
+  if ( eval ufw status | grep enable ); then
     if ( eval sed -n 19p README.html | grep '❌' ); then
       sed -i '19s/❌/✅/' README.html
     fi
   fi
-  if ( eval ls /home/cyber/Desktop | grep file.txt ); then
-    if ( eval sed -n 20p README.html | grep '❌' ); then
-      sed -i '20s/❌/✅/' README.html
+  if ( eval cat /etc/login.defs | grep PASS_MAX_DAYS | grep 90 ); then
+    if ( eval sed -n 23p README.html | grep '❌' ); then
+      sed -i '23s/❌/✅/' README.html
     fi
   fi
-  if ( eval cat /home/cyber/Desktop/file.txt | grep 'l0nest@r' ); then
-    if ( eval sed -n 21p README.html | grep '❌' ); then
-      sed -i '21s/❌/✅/' README.html
+  if ( eval cat /etc/login.defs | grep PASS_MIN_DAYS | grep 10 ); then
+    if ( eval sed -n 25p README.html | grep '❌' ); then
+      sed -i '25s/❌/✅/' README.html
     fi
   fi
-  if ( eval ls /home/cyber/Documents | grep ubu ); then
-    if ( eval sed -n 22p README.html | grep '❌' ); then
-      sed -i '22s/❌/✅/' README.html
+  if ( eval cat /etc/group | grep kali ); then
+    if ( eval sed -n 28p README.html | grep '❌' ); then
+      sed -i '28s/❌/✅/' README.html
+    fi
+  fi
+  if ( eval dpkg -l | grep openssh-client ); then
+    if ( eval sed -n 31p README.html | grep '❌' ); then
+      sed -i '31s/❌/✅/' README.html
+    fi
+  fi
+  if ( ! eval cat /etc/ssh/ssh_config | grep 'ForwardX11 no' | grep \# ); then
+    if ( eval sed -n 33p README.html | grep '❌' ); then
+      sed -i '33s/❌/✅/' README.html
+    fi
+  fi
+  if ( ! eval cat /etc/ssh/ssh_config | grep 'Port 22' | grep \# ); then
+    if ( eval sed -n 35p README.html | grep '❌' ); then
+      sed -i '35s/❌/✅/' README.html
+    fi
+  fi
+  if ( eval cat /etc/ssh/ssh_config | grep 'Protocol 2' ); then
+    if ( eval sed -n 33p README.html | grep '❌' ); then
+      sed -i '33s/❌/✅/' README.html
     fi
   fi
 done
