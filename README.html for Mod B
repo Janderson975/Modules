@@ -1,0 +1,45 @@
+<html>
+
+<h1>Welcome to Linux Module B!</h1>
+<h2>The purpose of this module is to expand of the previous and introduce basic cyber security practices</h2>
+<p>Here's the previous list of basic linux commands</p>
+<p>cd </p>
+<p>ls</p>
+<p>mv</p>
+<p>cp</p>
+<p>touch</p>
+<p>rm</p>
+<p>mkdir</p>
+<p>rmdir</p>
+<p>nano</p>
+<p>gedit</p>
+<p>If you need a refresher on these commands, you can open up the previous module; however, you can also Google what they do and their syntax. Using Google effectively is critical to cyber security work and its good to get in the practice of searching using the right terms</p>
+<p>In this module, you will utilize nano/gedit to edit specific files as well as using apt to install an application.</p>
+<p>One of the most import things to do when first securing a computer is enabling the firewall</p>
+<p>Use the command ufw enable to turn on the firewall</p>
+<p>This turns on the firewall making it much more difficult for bad applications to enter your computer
+<p>Open a terminal and navigate to /etc. This is where you will do most of your work in cyber security.</p>
+<p>Many files in this directory requires admin/root privileges to use. To run commands as root user, put sudo in front of your commands. After the command is run, you may have to enter a password. The password for your user is l0nest3r.</p>
+<p>Use sudo nano on the login.defs file and find the white text that says PASS_MAX_DAYS 99999 and change 99999 to 90</p>
+<p>This change means that all users must change their passwords every 90 days which makes them more secure.</p>
+<p>Change the 0 in the next line to 10</p>
+<p>This change means that all users cannot change their password until they had those passwords for 10 days minimum. Press ctrl and x at the same time to exit the file and press y then enter to save your changes</p>
+<p>Sudo nano on the group file to see all the users on the computer. If you scroll down, you will see the user kali. This user is not supposed to be on the computer and is a massive security threat. Exit the file using ctrl x.</p>
+<p>Use the command sudo userdel on kali to remove them from the system</p>
+<p>This can also be done by deleting them from the group, shadow, and passwd files but using this command is quicker and more thorough</p>
+<p>Finally you will install an application called secure shell (SSH) which is a remote desktop application. It is often used people running linux to remotely connect to their computers in a secure way</p>
+<p>Use sudo apt install openssh-client to install ssh on your computer</p>
+<p>Navigate to the ssh directory in etc and use nano to open the ssh_config file. This file controls automatic processes that the application does whenever you open the computer so it is very important for security</p>
+<p>Remove the # in front of the line that reads ForwardX11 no</p>
+<p>Removing this means that anyone remotely connecting to the computer will only have access to a terminal making it harder for a hacker to get information off your computer</p>
+<p>Remove the # in front of the line that reads Port 22<p/>
+<p>Removing this means that ssh uses port 22 to send data to the remote computer. This is ssh's assigned port making the application run without conflicting with other applications.</p>
+<p>Add Protocol 2 to the bottom of the file</p>
+<p>Adding this line makes ssh use a newer protocol which is more secure than the previous.</p>
+<p>Finally, add PremitRootLogin no to the end of the file</p>
+<p>Adding this line means that anyone remotely accessing your computer through ssh cannot login as the root user meaning if a hacker does get in through ssh, they cannot do as much damage because they have no privileges</p>
+
+
+<h3>Congratulations! You finsihed Linux Module B and can now manuver through a linux system and secure it. You can also secure an important sevice used by millions a day to access their computer<h3>
+
+</html>
