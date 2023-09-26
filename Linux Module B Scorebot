@@ -44,4 +44,9 @@ do
       sed -i '33s/❌/✅/' README.html
     fi
   fi
+  if ( eval cat /etc/ssh/ssh_config | grep 'PermitRootLogin no' ); then
+    if ( eval sed -n 33p README.html | grep '❌' ); then
+      sed -i '33s/❌/✅/' README.html
+    fi
+  fi
 done
