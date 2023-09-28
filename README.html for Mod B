@@ -21,7 +21,7 @@
 <p>In this module, you will utilize nano/gedit to edit specific files as well as using apt to install an application.</p>
 <p>One of the most import things to do when first securing a computer is enabling the firewall</p>
 <p></p>
-<p>Use the command ufw enable to turn on the firewall. This will prompt you for a password. Enter: l0nest3r </p> 
+<p>Use the command "sudo ufw enable" to turn on the firewall. This will prompt you for a password. While typing in the password, it will show that you are typing anything, but you are; its just hidden. Enter: l0nest3r </p> 
 <h3> ❌️ </h3>
 <p></p>
 <p>This turns on the firewall making it much more difficult for bad applications to enter your computer.</p>
