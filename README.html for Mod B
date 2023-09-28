@@ -28,7 +28,8 @@
 <p>Open a terminal and navigate to /etc by using "cd /etc". This is where you will do most of your work in cyber security.</p>
 <p>Many files in this directory requires admin/root privileges to use. To run commands as root user, put sudo in front of your commands..</p>
 <p>Use sudo nano on the login.defs file</p> 
-<p>Find the white text that says PASS_MAX_DAYS 99999 (hint: ctrl w works like ctrl f in windows) and change 99999 to 90 </p> <h3> ❌️ </h3>
+<p>Find the white text that says PASS_MAX_DAYS 99999 (hint: ctrl w works like ctrl f in windows) and change 99999 to 90 </p> 
+<h3> ❌️ </h3>
 <p>This change means that all users must change their passwords every 90 days which makes them more secure.</p>
 <p>Change the 0 in the next line to 10 </p> 
 <h3> ❌️ </h3>
