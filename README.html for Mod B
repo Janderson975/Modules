@@ -30,21 +30,28 @@
 <p>Use sudo nano on the login.defs file</p> 
 <p>Find the white text that says PASS_MAX_DAYS 99999 (hint: ctrl w works like ctrl f in windows) and change 99999 to 90 </p> <h3> ❌️ </h3>
 <p>This change means that all users must change their passwords every 90 days which makes them more secure.</p>
-<p>Change the 0 in the next line to 10 </p> <h3> ❌️ </h3>
+<p>Change the 0 in the next line to 10 </p> 
+<h3> ❌️ </h3>
 <p>This change means that all users cannot change their password until they had those passwords for 10 days minimum. Press ctrl and x at the same time to exit the file and press y then enter to save your changes</p>
 <p>Use "sudo nano group" to see all the users on the computer. If you scroll down, you will see the user kali. This user is not supposed to be on the computer and is a massive security threat. Exit the file using ctrl x.</p>
-<p>Use the command "sudo userdel kali" to remove them from the system. </p> <h3> ❌️ </h3>
+<p>Use the command "sudo userdel kali" to remove them from the system. </p> 
+<h3> ❌️ </h3>
 <p>This can also be done by deleting them from the group, shadow, and passwd files but using this command is quicker and more thorough.</p>
 <p>Finally you will install an application called secure shell (SSH) which is a remote desktop application. It is often used people running linux to remotely connect to their computers in a secure way.</p>
-<p>Use "sudo apt install openssh-client" to install ssh on your computer </p> <h3> ❌️ </h3>
+<p>Use "sudo apt install openssh-client" to install ssh on your computer </p> 
+<h3> ❌️ </h3>
 <p>Navigate to the ssh directory in etc and use nano to open the ssh_config file. This file controls automatic processes that the application does whenever you open the computer so it is very important for security</p>
-<p>Remove the # in front of the line that reads ForwardX11 no. </p> <h3> ❌️ </h3>
+<p>Remove the # in front of the line that reads ForwardX11 no. </p> 
+<h3> ❌️ </h3>
 <p>Removing this means that anyone remotely connecting to the computer will only have access to a terminal making it harder for a hacker to get information off your computer</p>
-<p>Remove the # in front of the line that reads Port 22 <p/> <h3> ❌️ </h3>
+<p>Remove the # in front of the line that reads Port 22 <p/> 
+<h3> ❌️ </h3>
 <p>Removing this means that ssh uses port 22 to send data to the remote computer. This is ssh's assigned port making the application run without conflicting with other applications.</p>
-<p>Add Protocol 2 to the bottom of the file. </p> <h3> ❌️ </h3>
+<p>Add Protocol 2 to the bottom of the file. </p> 
+<h3> ❌️ </h3>
 <p>Adding this line makes ssh use a newer protocol which is more secure than the previous.</p>
-<p>Finally, add PremitRootLogin no to the end of the file. </p> <h3> ❌️ </h3>
+<p>Finally, add PremitRootLogin no to the end of the file. </p> 
+<h3> ❌️ </h3>
 <p>Adding this line means that anyone remotely accessing your computer through ssh cannot login as the root user meaning if a hacker does get in through ssh, they cannot do as much damage because they have no privileges</p>
 
 
