@@ -1,0 +1,18 @@
+#!/bin/bash
+
+README="/home/cyber/Desktop/README.html"
+
+function check()
+{
+  if ( eval $1 ); then
+    if ( eval sed -n $2p $README | grep '❌' ); then
+      sed -i '$2s/❌/✅/' $README
+    fi
+  fi
+}
+
+check 'cat /etc/ftpusers | grep "root"' '#######'
+check 'cat /etc/ftpusers | grep "developer"' '#######'
+check 'cat /etc/vsftpd.conf | grep "anonymous_enabled=NO"' '######'
+check 'cat /etc/vsftpd.conf | grep "chroot_local_user=YES"' '######'
+check 'cat /etc/vsftpd.conf | grep "secure_chroot_dir=/ftp/ftpuser/jail"' '######'
