@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<div class="welcome">
+  <h1>Welcome to Linux Module C!</h1>
+  <h2>The purpose of this module is to introduce you to a commonly used Linux service</h2>
+  <p>Here's the previous list of basic linux commands. Anything between single quotes '' should be replaced with the actual thing. Example: 'filename' should be replaced with the actual filename that you want.</p>
+  <p></p>
+  <p>cd 'directory'</p>
+  <p>ls</p>
+  <p>mv 'filename' '/path/to/location'</p>
+  <p>cp 'filename' '/path/to/location'</p>
+  <p>touch 'filename' </p>
+  <p>rm 'filename'</p>
+  <p>mkdir 'directory'</p>
+  <p>rmdir 'directory'</p>
+  <p>nano 'filename'</p>
+  <p>gedit 'filename'</p>
+  <p></p>
+  <p>If you need a refresher on these commands, you can open up the previous module; however, you can also Google what they do and their syntax. Using Google effectively is critical to cyber security work and its good to get in the practice of searching using the right terms</p>
+  <p></p>
+  <h3>Your credentials are cyber:lonestar with cyber being your username and lonestar being your password. This will be important for running commands as root using the command "sudo" in front of other commands</h3>
+  <p></p>
+</div>
+
+<div class="ftp">
+  <h2>The first new service you will be learning is the File Transfer Protocol (FTP).</h2>
+  <p>There are multiple different applications that use ftp. The one that we will be using is vsftpd which is not yet installed on the computer.</p>
+  <p>Install it using the command "sudo apt install vsftpd" which will prompt you for your password. Like in the last module, you will not be able to see characters being typed.</p>
+  <p>VSFTPD installed ❌ </p>
+  <p>If the command does not work, try running "sudo apt update" first and then run the previous command.</p>
+  <p>Manuver to "/etc" and edit the file "ftpusers" to include the users "root" and "developer" in them. Adding users to this file prevents them from using ftp on the system. We never want root to be able to use ftp as it gives a user too </p>
+  <p>Root added to ftpusers ❌ </p>
+  <p>Developer added to ftpusers ❌ </p>
+  <p>Make sure to save the file.</p>
+  <p>Now begin editing the file vsftpd.conf.</p>
+  <p>To stop anonymous connections, change "anonymous_enable=YES" to "anonymous_enable=NO" which is require all users to know an authorized username and password. This prevents unauthorized users from having access to your system which ftp can allow.</p>
+  <p>Anonymous mode disabled ❌ </p>
+  <p>Next we will cover chroot. In the context of ftp, chroot prevents users from accessing certain files/directory while accessing the computer using ftp. To enable this function in ftp, change "chroot_local_enable=YES"</p>
+  <p>Chroot enabled ❌ </p>
+  <p>To make the chroot effective, we must setup the directory to be used as a jail. Luckily, I have already done this. All you need to do is set "secure_chroot_dir" equal to "/ftp/ftpuser/jail"</p>
+  <p>Chroot jail file set up ❌ </p>
+  <p>Make sure to save the file</p>
+  <p>Test the chroot jail by running the command "ftp localhost" and then entering the credentials of the user "ftpuser" with the password "l0nestar" to login. Using cyber will not work as it is configured for ftp to not chroot them.</p>
+  <p>Attempt to switch directories. It should throw an error at you as you do not have access to any other directory. There are two files within your current folder, test and a hidden file. An important part of cyber is being able to use google. Find out "how to see hidden files in Linux terminal."</p>
+  <p>Enter the name of the hidden file into the file named "Forensics challenge" on your Desktop.</p>
+  <p>Hidden file name found ❌ </p>
+  <p>Finally, exit ftp by typing out "quit" and pressing enter. You may try out the ftp command with other users by typing out "ftp localhost" and entering the credentials of another user on the system.</p>
+  <p>Your last task is to do one last configuration in vsftpd.conf. Add the line "ssl_enable=YES" anywhere in th file (at the bottom is recommended) to enable encryption of ftp.</p>
+  <p>SSL enabled ❌ </p>
+</div>
+
+<div class="end">
+  <h1>Congratulations! You have finished Linux Module C. </h1>
+  <h3>This was the last defensive module. The next three will be offensive modules and will be a abit more complicated. It is advised that you learn from your training lead before continuing.</h3>
+</div>
