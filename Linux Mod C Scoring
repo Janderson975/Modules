@@ -9,13 +9,18 @@ function check()
       sed -i '$2s/❌/✅/' $README
     fi
   fi
+  if ( ! eval $1 ); then
+    if ( eval sed -n $2p $README | grep '✅' ); then
+      sed -i '$2s/✅/❌/' $README
+    fi
+  fi
 }
 
-check 'dpkg -l | grep "vsftpd"' '#######'
-check 'cat /etc/ftpusers | grep "root"' '#######'
-check 'cat /etc/ftpusers | grep "developer"' '#######'
-check 'cat /etc/vsftpd.conf | grep "anonymous_enabled=NO"' '######'
-check 'cat /etc/vsftpd.conf | grep "chroot_local_user=YES"' '######'
-check 'cat /etc/vsftpd.conf | grep "secure_chroot_dir=/ftp/ftpuser/jail"' '######'
-check 'cat /home/cyber/Desktop/'Forensics Challenge' | grep "answer.txt"' '######'
-check 'cat /etc/vsftpd.conf | grep "SSL_enabled=YES"' '######'
+check 'dpkg -l | grep "vsftpd"' '29'
+check 'cat /etc/ftpusers | grep "root"' '32'
+check 'cat /etc/ftpusers | grep "developer"' '33'
+check 'cat /etc/vsftpd.conf | grep "anonymous_enabled=NO"' '37'
+check 'cat /etc/vsftpd.conf | grep "chroot_local_user=YES"' '39'
+check 'cat /etc/vsftpd.conf | grep "secure_chroot_dir=/ftp/ftpuser/jail"' '41'
+check 'cat /home/cyber/Desktop/'Forensics Challenge' | grep "answer.txt"' '46'
+check 'cat /etc/vsftpd.conf | grep "SSL_enabled=YES"' '49'
