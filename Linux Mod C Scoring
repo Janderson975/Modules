@@ -11,8 +11,11 @@ function check()
   fi
 }
 
+check 'dpkg -l | grep "vsftpd"' '#######'
 check 'cat /etc/ftpusers | grep "root"' '#######'
 check 'cat /etc/ftpusers | grep "developer"' '#######'
 check 'cat /etc/vsftpd.conf | grep "anonymous_enabled=NO"' '######'
 check 'cat /etc/vsftpd.conf | grep "chroot_local_user=YES"' '######'
 check 'cat /etc/vsftpd.conf | grep "secure_chroot_dir=/ftp/ftpuser/jail"' '######'
+check 'cat /home/cyber/Desktop/'Forensics Challenge' | grep "answer.txt"' '######'
+check 'cat /etc/vsftpd.conf | grep "SSL_enabled=YES"' '######'
