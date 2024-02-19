@@ -9,6 +9,44 @@
 <div class="recon">
   <p>Most offensive cyber (or "red team") starts with reconnaissance about both the target machine and the target user.</p>
   <p>Along with this virtual machine, you have been giving another. Please log into that system with the credentials cyber:lonestar.</p>
-  <p>On the ubuntu machine, run the command "sudo ifconfig 192.168.10.10" to manually assign your ip address. This is to keep the lab consistent and easier to follow. In a read situation, the ip address would likely be automatically assigned.</p>
-  <p>On your machine, run the command "sudo ifconfig 192.168.10.10" to manually set your ip address. The machines can now talk to one another as they are on the same network. Test this by running "ping 192.168.10.10" on the kali machine. You should get a response telling you how much delay there was between send and recieve.</p>
-  <p>Now, we will get familiar with a tool called nmap. Nmap allows someone to scan a network and devices on that network. This can be used by both system administrators and by attackers alike. </p>
+  <p>On the ubuntu machine, run the command "sudo ifconfig ens33 192.168.10.10" to manually assign your ip address. This is to keep the lab consistent and easier to follow. In a read situation, the ip address would likely be automatically assigned.</p>
+  <p>On your machine, run the command "sudo ifconfig eth0 192.168.10.5" to manually set your ip address. The machines can now talk to one another as they are on the same network. Test this by running "ping 192.168.10.10" on the kali machine. You should get a response telling you how much delay there was between send and recieve.</p>
+  <p>Now, we will get familiar with a tool called nmap. Nmap allows someone to scan a network and devices on that network. This can be used by both system administrators and by attackers alike.</p>
+  <p>The first step in reconnaissance in to find your target. Normally, you would run a command similar to "nmap -sL 192.168.10.0/24" to view devices on the network. However, there is only one other device on the network: 192.168.10.10 as the virtual machines are on a private network.</p>
+  <p>The second step is often to identify what operating system we are attacking. You already know that the target in running ubuntu; however, an attacker would not. Run the command "nmap -O 192.168.10.10" to identify the version.</p>
+  <br>
+  <p>What Linux version is the target machine one (after the word Running:)? Answer:  </p>
+  <p>❌</p>
+  <br>
+  <p>Now that we know what we are attacking, we can identify how. The third step of reconnaissance is often identifying services on the target machine that could potentially be exploited. Run the command "nmap -p1-65535 192.168.10.10" to see what services are running.</p>
+  <br>
+  <p>What port is ftp running on? Answer: </p>
+  <p>❌</p>
+  <br>
+  <p>We know that both ssh and ftp are running on the ubuntu machine. We cannot connect via ssh yet because we do not know a username (except cyber) or password. However, FTP does allow anonymous connects so we can start with that. Run the command ftp 192.168.10.10. Enter in the username anonymous and the password anonymous.</p>
+  <p>We see two directories: cyber and target. Go into either directory and see what is inside. While it does not directly tell us where we are, we can assume we are in the directory /home. The misconfiguration of the ftp sevrer has given us critical information: usernames. We now know that the user "target" exists on the system. We cannot go anywhere else using ftp so enter the command "quit" to leave.</p>
+  <p>Now that we know a username, we can attempt to login to the machine user ssh. We do not yet have a password, but kali comes with another tool that can help us: hydra. Hydra allows someone to attemtp remote connections without a password by using a wordlist. A wordlist is a list of commonly used passwords. If the password appears on this list, hydra can allow us entry into the system.</p>
+  <p>Run the command "hydra -l target -P /usr/share/wordlists/rockyou.txt" to try and access the ubuntu machine.</p>
+  <br>
+  <p>What is target's password? Answer: </p>
+  <p>❌</p>
+  <br>
+  <p>Hydra may not connect use automatically. Run the command "ssh target@192.168.10.10" and enter to password that hydra just gave us.</p>
+  <p>Now we have access to the machine through the user target, but we are not done. We are only a normal user. We need to become root before we can do anything important. Navigate to /etc and run the command "cat shadow" to display the contents of the shadow file.</p>
+  <p>The shadow file contains password hashes of all users in the system including root's. Normally, this file is only readable by root, bu their was a misconfiguration of the nano command allowing all users to run the command as root.</p>
+  <br>
+  <p>What is root's password hash? Answer: </p>
+  <p>❌</p>
+  <br>
+  <p>Now that we have root's hash, we can learn about our last tool: John. John is a password cracking like hydra except it takes a wordlist, hashes each word, and checks to see if that hashes matches the one you give it. If it does, it identifies which word's hash matches and gives you the unhashed password. Run the command placeholder.</p>
+  <br>
+  <p>What is root's password? Answer: </p>
+  <p>❌</p>
+  <br>
+  <p>As root, you now have unrestricted access to the ubuntu machine. Because of how simple the passwords were and how poorly configured the services were, gaining full access to it was very easy. This is why strong passwords, restrictive password policy, proper configuration, and education in cybersecurity in general are all important.</p>
+</div>
+
+<div class="end">
+  <h2>Congratulations on completing Linux Module D!</h2>
+  <h3>You now have a basic understanding of some of kali's tools and have a deeper understanding of why the application security you did in modules B and C was so important. However, you have only been introduced to one part of red team. In the next module, we will discuss persistence.</h3>
+</div>
