@@ -15,12 +15,12 @@
   <p>The first step in reconnaissance in to find your target. Normally, you would run a command similar to "nmap -sL 192.168.10.0/24" to view devices on the network. However, there is only one other device on the network: 192.168.10.10 as the virtual machines are on a private network.</p>
   <p>The second step is often to identify what operating system we are attacking. You already know that the target in running ubuntu; however, an attacker would not. Run the command "nmap -O 192.168.10.10" to identify the version.</p>
   <br>
-  <p>What Linux version is the target machine one (after the word Running:)? Answer:  </p>
+  <p>What Linux version is the target machine one (after the word Running:)? Answer:  Linux 5.x </p>
   <p>❌</p>
   <br>
   <p>Now that we know what we are attacking, we can identify how. The third step of reconnaissance is often identifying services on the target machine that could potentially be exploited. Run the command "nmap -p1-65535 192.168.10.10" to see what services are running.</p>
   <br>
-  <p>What port is ftp running on? Answer: </p>
+  <p>What port is ftp running on? Answer: 21 </p>
   <p>❌</p>
   <br>
   <p>We know that both ssh and ftp are running on the ubuntu machine. We cannot connect via ssh yet because we do not know a username (except cyber) or password. However, FTP does allow anonymous connects so we can start with that. Run the command ftp 192.168.10.10. Enter in the username anonymous and the password anonymous.</p>
@@ -28,19 +28,19 @@
   <p>Now that we know a username, we can attempt to login to the machine user ssh. We do not yet have a password, but kali comes with another tool that can help us: hydra. Hydra allows someone to attemtp remote connections without a password by using a wordlist. A wordlist is a list of commonly used passwords. If the password appears on this list, hydra can allow us entry into the system.</p>
   <p>Run the command "hydra -l target -P /usr/share/wordlists/rockyou.txt" to try and access the ubuntu machine.</p>
   <br>
-  <p>What is target's password? Answer: </p>
+  <p>What is target's password? Answer: password1 </p>
   <p>❌</p>
   <br>
   <p>Hydra may not connect use automatically. Run the command "ssh target@192.168.10.10" and enter to password that hydra just gave us.</p>
-  <p>Now we have access to the machine through the user target, but we are not done. We are only a normal user. We need to become root before we can do anything important. Navigate to /etc and run the command "cat shadow" to display the contents of the shadow file.</p>
-  <p>The shadow file contains password hashes of all users in the system including root's. Normally, this file is only readable by root, bu their was a misconfiguration of the nano command allowing all users to run the command as root.</p>
+  <p>Now we have access to the machine through the user target, but we are not done. We are only a normal user. We need to become root before we can do anything important. Navigate to /etc and run the command "cat shadows" to display the contents of the shadows file.</p>
+  <p>The shadows file contains password hashes of all users in the system including root's. Normally, this file is only readable by root, but their was a misconfiguration of the nano command allowing all users to run the command as root.</p>
   <br>
   <p>What is root's password hash? Answer: </p>
-  <p>❌</p>
+  <p>❌ 9a900403ac313ba27a1bc81f0932652b8020dac92c234d98fa0b06bf0040ecfd</p>
   <br>
   <p>Now that we have root's hash, we can learn about our last tool: John. John is a password cracking like hydra except it takes a wordlist, hashes each word, and checks to see if that hashes matches the one you give it. If it does, it identifies which word's hash matches and gives you the unhashed password. Run the command placeholder.</p>
   <br>
-  <p>What is root's password? Answer: </p>
+  <p>What is root's password? Answer: qwertyuiop </p>
   <p>❌</p>
   <br>
   <p>As root, you now have unrestricted access to the ubuntu machine. Because of how simple the passwords were and how poorly configured the services were, gaining full access to it was very easy. This is why strong passwords, restrictive password policy, proper configuration, and education in cybersecurity in general are all important.</p>
