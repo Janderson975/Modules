@@ -1,1 +1,49 @@
+<!DOCTYPE html>
 
+<div class="welcome">
+  <h1>Welcome to Linux Module E!</h1>
+  <h2>The purpose of this module is to further your knowledge of offensive cyber security while building upon prior knowledge.</h2>
+  <h3>Like in all default kali instances, your credentials are kali:kali.</h3>
+</div>
+
+<div class="lat">
+  <p>In this module, we will primarily focus on lateral movement or the way attackers use an initial point of access to access other machines much more easily.</p>
+  <p>While this module is an oversimplification of lateral movement, as all virtual machine are in a contained environment, it still provides the basics for how one would go about moving from computer to computer.</p>
+  <p>We already covered initial access in the last module, so we will skip over most of that. Run the command placeholder to access the initial target machine using ssh.</p>
+  <p>To be able to view ip addresses available to the new machine, run the command "apt install nmap" to install nmap on the target machine..</p>
+  <p>Run the command placeholder to view the network from this machine's perspective. Run the same command on the kali instance (using a 2nd terminal) and compare the two results.</p>
+  <br>
+  <p>What ip address shows different results for the kali machine and the remote machine?</p>
+  <p>Place the answer in the file called "Forensics.txt"</p>
+  <p>❌</p>
+  <br>
+  <p>We could not obtain access to this Linux machine without first obtaining access to the first target. Now we can use this access to get into the new machine.</p>
+  <p>This new computer is running a server installation of Linux meaning it has no graphics. Servers are often always running and contain the most vital data. Because of this, they usually have added protections on them which is why we had to go through the workstation computer to access the server.</p>
+  <p>Now that we know the server exists and that its running ssh, we can try to access it from workstation. If we try to access it now, we cannot as we do not have the password. We can do the same thing as we did in module D with hydra though.</p>
+  <p>To do this however, we need to find a username that may be on the system. Look around the workstation to see if you can find a username for the server. </p>
+  <p>If you cannot find anything, you can always open the file hint.txt on your kali machine. Try to find something first to get a better feel for how an attacker would go about doing this.</p>
+  <br>
+  <p>What is the username of the server's primary user?</p>
+  <p>Place the answer in the file called "Forensics.txt"</p>
+  <p>❌</p>
+  <br>
+  <p>Run the command placeholder to see if we can crack the password.</p>
+  <br>
+  <p>what is the user's password?</p>
+  <p>Place the answer in the file called "Forensics.txt"</p>
+  <p>❌</p>
+  <br>
+  <p>Now we have access to both the server and the workstation. This attack sequence is common in a real scenario as a server is usually the primary objective but it is often not available to just anyone. A server will likely be set up to only allow access to workstations that need it meaning an attacker must compromise those before getting to their true target.</p>
+</div>
+
+<div class=persist>
+  <p>While we now have access to both the server and the workstation, this access is not permanent. If either of the computers turn off, if either ssh connection is killed, or if firewall rules are changed, we will lose access to these machine. An attacker normally needs a good deal of time to accomplish their goal which is why they establish persistance.</p>
+  <p>There are many ways to do this some of which are more complicated than others. In this module, we will cover the more basic methods.</p>
+  <p>The easiest method is crontab. Crontab is similar to windows task scheduler in that it performs designated jobs at set times. This utility is very versatile and it comes installed on every Linux version.</p>
+  <p>While still logged into to </p>
+
+
+
+
+
+  
