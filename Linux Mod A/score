@@ -1,0 +1,26 @@
+#!/bin/bash
+
+README="/home/cyber/Desktop/README.html"
+
+function check()
+{
+  if ( eval $1 ); then
+    if ( eval sed -n $2p $README | grep '❌' ); then
+      sed -i '$2s/❌/✅/' $README
+    fi
+  fi
+  if ( ! eval $1 ); then
+    if ( eval sed -n $2p $README | grep '✅' ); then
+      sed -i '$2s/✅/❌/' $README
+    fi
+  fi
+}
+
+check 'ls /home/cyber | grep "Music"' '18'
+check '! ls /home/cyber/Documents | grep "pass.txt"' '19'
+check 'ls /home/cyber/Desktop | grep "file.txt"' '20'
+check 'cat /home/cyber/Desktop/file.txt | grep "l0nest@r"' '21'
+check 'ls /home/cyber/Documents | grep "ubu"' '22'
+if ( ! eval cat /home/cyber/Desktop/README.html | grep '❌' ); then
+    sed -i '25s/incomplete/Congratulations! You have finished module A and now know basic terminal utility. You can now move onto Module B for basic security/' README.html
+fi
