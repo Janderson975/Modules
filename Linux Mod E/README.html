@@ -9,9 +9,9 @@
 <div class="lat">
   <p>In this module, we will primarily focus on lateral movement or the way attackers use an initial point of access to access other machines much more easily.</p>
   <p>While this module is an oversimplification of lateral movement, as all virtual machine are in a contained environment, it still provides the basics for how one would go about moving from computer to computer.</p>
-  <p>We already covered initial access in the last module, so we will skip over most of that. Run the command placeholder to access the initial target machine using ssh.</p>
+  <p>We already covered initial access in the last module, so we will skip over most of that. Run the command ssh cyber@192.168.10.10 to access the initial target machine using ssh. If prompted, input "lonestar" as the password.</p>
   <p>Because of the environment the machines are in, neither can connect to the internet meaning the remote machine cannot install nmap like you would in a real scenario. Luckily, all necessary tools have been installed on that client already.</p>
-  <p>Run the command placeholder to view the network from this machine's perspective. Run the same command on the kali instance (using a 2nd terminal) and compare the two results.</p>
+  <p>Run the command nmap -Pn 192.168.10.0/24 to view the network from this machine's perspective. Run the same command on the kali instance (using a 2nd terminal) and compare the two results.</p>
   <br>
   <p>What ip address shows different results for the kali machine and the remote machine?</p>
   <p>Place the answer in the file called "Forensics.txt"</p>
@@ -27,7 +27,7 @@
   <p>Place the answer in the file called "Forensics.txt"</p>
   <p>❌</p>
   <br>
-  <p>Run the command placeholder to see if we can crack the password.</p>
+  <p>Run the command "hydra -l cyber2 -P /usr/share/wordlists/rockyou.txt ssh://192.168.10.20" to see if we can crack the password.</p>
   <br>
   <p>what is the user's password?</p>
   <p>Place the answer in the file called "Forensics.txt"</p>
