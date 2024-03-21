@@ -38,7 +38,7 @@
   <p>What is root's password hash? Answer: </p>
   <p>❌ 9a900403ac313ba27a1bc81f0932652b8020dac92c234d98fa0b06bf0040ecfd</p>
   <br>
-  <p>Now that we have root's hash, we can learn about our last tool: John. John is a password cracking like hydra except it takes a wordlist, hashes each word, and checks to see if that hashes matches the one you give it. If it does, it identifies which word's hash matches and gives you the unhashed password. Run the command placeholder.</p>
+  <p>Now that we have root's hash, we can learn about our last tool: John. John is a password cracking like hydra except it takes a wordlist, hashes each word, and checks to see if that hashes matches the one you give it. If it does, it identifies which word's hash matches and gives you the unhashed password. Run the command john --wordlist=/usr/share/wordlists/rockyou.txt --format=md5 /home/kali/Desktop/password.txt</p>
   <br>
   <p>What is root's password? Answer: qwertyuiop </p>
   <p>❌</p>
