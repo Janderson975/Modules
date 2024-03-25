@@ -1,0 +1,21 @@
+#!/bin/bash
+
+README="/home/cyber/Desktop/README.html"
+
+function check()
+{
+  if ( eval $1 ); then
+    if ( eval sed -n $2p $README | grep '❌' ); then
+      sed -i '$2s/❌/✅/' $README
+    fi
+  fi
+  if ( ! eval $1 ); then
+    if ( eval sed -n $2p $README | grep '✅' ); then
+      sed -i '$2s/✅/❌/' $README
+    fi
+  fi
+}
+
+check 'ufw status | grep "active"' '25'
+check 'cat /home/cyber/Desktop/Forensics.txt | grep "cyber2"' '28'
+check 'cat /home/cyber/Desktop/Forensics.txt | grep "P@ssw0rd"' '34'
